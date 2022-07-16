@@ -1,20 +1,21 @@
 ﻿@page
+@model IndexModel
 @{
     ViewData["Title"] = "Главная";
 }
 
 @*<div class="row">
-    <div class="side">
-        Описание самой клевой соцсети
-    </div>
+        <div class="side">
+            Описание самой клевой соцсети
+        </div>
 
 
-    <div class="main">
-        <partial name="Register" />
-    </div>
+        <div class="main">
+            <partial name="Register" />
+        </div>
 
-</div>*@
+    </div>*@
 
 <div class="main">
-    <partial name="Register" />
+    <partial name="Register" model="Model.RegisterView" />
 </div>
