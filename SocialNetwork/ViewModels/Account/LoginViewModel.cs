@@ -4,16 +4,19 @@ namespace SocialNetwork.ViewModels.Account
 {
     public class LoginViewModel
     {
-        [Required]
-        public string Name { get; set; }
+      [Required]
+      [EmailAddress]
+      [Display(Name = "Email", Prompt = "Введите email")]
+      public string Email { get; set; }
 
-        [Required]
-        public string Password { get; set; }
+      [Required]
+      [DataType(DataType.Password)]
+      [Display(Name = "Пароль", Prompt = "Введите пароль")]
+      public string Password { get; set; }
 
-        [Required]
-        public bool RememberMe { get; set; }
+      [Display(Name = "Запомнить?")]
+      public bool RememberMe { get; set; }
 
-        [Required]
-        public string ReturnUrl { get; set; }
-    }
+      public string ReturnUrl { get; set; }
+   }
 }

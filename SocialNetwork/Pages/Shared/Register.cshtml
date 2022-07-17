@@ -7,21 +7,23 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
 
-<h2>Регистрация нового пользователя</h2>
-<form method="get" asp-controller="Register" asp-action="RegisterPart2">
+<h4>Регистрация нового пользователя</h4>
+<form class="form" method="get" asp-controller="Register" asp-action="RegisterPart2">
     <div asp-validation-summary="ModelOnly"></div>
     <div>
-        <label asp-for="FirstName"></label><br />
-        <input asp-for="FirstName" />
-        <span asp-validation-for="FirstName"></span>
+        <div class="input_box">
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
     </div>
     <div>
-        <label asp-for="LastName"></label><br />
-        <input asp-for="LastName" />
-        <span asp-validation-for="LastName"></span>
+        <div class="input_box">
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
     </div>
     
     <div>
-        <input type="submit" value="Регистрация" />
+        <input class="button" type="submit" value="Регистрация" />
     </div>
 </form>
