@@ -12,6 +12,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using SocialNetwork.Models;
 using SocialNetwork.Data;
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
 
 namespace SocialNetwork
 {
@@ -29,15 +31,30 @@ namespace SocialNetwork
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
-            services.AddIdentity<User, IdentityRole>(opts => {
-                                 opts.Password.RequiredLength = 5;
-                                 opts.Password.RequireNonAlphanumeric = false;
-                                 opts.Password.RequireLowercase = false;
-                                 opts.Password.RequireUppercase = false;
-                                 opts.Password.RequireDigit = false;
-                             })
+            var mapperConfig = new MapperConfiguration((v) =>
+            {
+                v.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+
+            services.AddSingleton(mapper);
+
+
+            services
+                .AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection))
+                .AddUnitOfWork()
+                    .AddCustomRepository<Message, MessageRepository>()
+                .AddIdentity<User, IdentityRole>(opts => {
+                    opts.Password.RequiredLength = 5;
+                    opts.Password.RequireNonAlphanumeric = false;
+                    opts.Password.RequireLowercase = false;
+                    opts.Password.RequireUppercase = false;
+                    opts.Password.RequireDigit = false;
+                })
                     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddControllersWithViews();
             services.AddRazorPages();
         }
 
