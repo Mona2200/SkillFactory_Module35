@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using AutoMapper;
 using SocialNetwork.ViewModels.Account;
-using SocialNetwork.Models;
+using SocialNetwork.Models.Users;
 
 namespace SocialNetwork.Controllers
 {
@@ -20,12 +20,23 @@ namespace SocialNetwork.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+
+
         [Route("Register")]
         [HttpGet]
         public IActionResult Register()
         {
             return View("Home/Register");
         }
+
+        [Route("RegisterPart2")]
+        [HttpGet]
+        public IActionResult RegisterPart2(RegisterViewModel model)
+        {
+            return View("RegisterPart2", model);
+        }
+
+
 
         [Route("Register")]
         [HttpPost]
@@ -49,13 +60,6 @@ namespace SocialNetwork.Controllers
                     }
                 }
             }
-            return View("RegisterPart2", model);
-        }
-
-        [Route("RegisterPart2")]
-        [HttpGet]
-        public IActionResult RegisterPart2(RegisterViewModel model)
-        {
             return View("RegisterPart2", model);
         }
     }

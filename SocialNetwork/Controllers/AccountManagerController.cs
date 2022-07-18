@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using AutoMapper;
 using SocialNetwork.ViewModels.Account;
-using SocialNetwork.Models;
+using SocialNetwork.Models.Users;
 
 namespace SocialNetwork.Controllers
 {
