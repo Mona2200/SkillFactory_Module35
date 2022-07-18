@@ -11,9 +11,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SocialNetwork.Models;
-using SocialNetwork.Data;
-using AutoMapper;
-using Microsoft.AspNetCore.Http;
 
 namespace SocialNetwork
 {
