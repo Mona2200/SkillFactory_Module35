@@ -97,7 +97,7 @@
     background-color: white;
     border-radius: 40px;
     padding: 10px;
-    margin: 10px;
+    margin: 15px;
     width: 25rem;
     margin-left: 50%;
     transform: translateX(-25%);
@@ -109,9 +109,10 @@
 
 .button {
     background: #007CFF;
-    margin: 10px;
     border: none;
     padding: 8px 14px;
     border-radius: 13px;
     color: white;
+    width: 13rem;
+    margin-top: 10px;
 }
