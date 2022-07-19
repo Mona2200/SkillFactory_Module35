@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using SocialNetwork.Models.Users;
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager;
+
+@model SocialNetwork.ViewModels.Account.MainViewModel;
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (SignInManager.IsSignedIn(User))
+{
+    //редирект
+}
+else
+{
+    <div class="row">
+        <div class="side">
+            <img class="main-img" src="https://kartinkin.net/uploads/posts/2020-07/1593746064_28-p-foni-na-temu-sots-setei-35.jpg" />
+        </div>
+
+        <div class="main">
+            <partial name="Login" model="@Model.LoginView" />
+            <partial name="Register" model="@Model.RegisterView"/>
+        </div>
+
+    </div>
+
+}
