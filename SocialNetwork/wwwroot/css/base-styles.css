@@ -6,22 +6,12 @@
     .topnav a {
         float: left;
         display: block;
-        color: black;
+        color: #007CFF;
         text-align: center;
-        padding: 14px 16px;
+        padding: 9px 16px;
         text-decoration: none;
         font-size: 17px;
     }
-
-        .topnav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        .topnav a.active {
-            background-color: #2196F3;
-            color: white;
-        }
 
 .righ-align {
     float: right;
