@@ -1,80 +1,17 @@
-﻿.white_top {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 50%;
-    background-color: white;
-    z-index: -2;
-}
-
-.blue_bottom {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: #64A5FF;
-    z-index: -2;
-}
-
-.white_left {
-    position: absolute;
-    top: 50px;
-    right: 50%;
-    left: 0;
-    bottom: 0;
-    background-color: white;
-    z-index: -1;
-    border-radius: 0 0 60px 0;
-}
-
-.blue_right {
-    position: absolute;
-    top: 56px;
-    right: 0;
-    left: 50%;
-    bottom: 0;
-    background-color: #64A5FF;
-    z-index: -1;
-    border-radius: 60px 0 0 0;
-}
-
-.main {
-    -ms-flex: 50%; /* IE10 */
-    flex: 50%;
+﻿.main {
+    -ms-flex: 40%; /* IE10 */
+    flex: 40%;
     padding: 20px;
-    text-align: center;
-    width: 50%;
 }
 
 
 .side {
-    -ms-flex: 50%; /* IE10 */
-    flex: 50%;
+    -ms-flex: 60%; /* IE10 */
+    flex: 60%;
     padding: 20px;
-    text-align: center;
 }
 
-.side_box {
-    background: url(https://img.freepik.com/free-vector/group-discussion-concept-illustration_114360-8782.jpg?w=740&t=st=1657985032~exp=1657985632~hmac=f66a24cfc8059845b02146a01163c4b96e6c6864ca2d8760f5eee47c3a12d045) 0 0 no-repeat;
-    background-size: cover;
-    height: 100%;
-}
-
-    .side_box > p {
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 29px;
-        color: #000000;
-    }
-
-    .side > img {
-        height: 26rem;
-    }
-
-.row_main {
+.row {
     display: -ms-flexbox; /* IE10 */
     display: flex;
     -ms-flex-wrap: wrap; /* IE10 */
@@ -82,36 +19,121 @@
 }
 
 .footer {
-    flex: 49.8%;
     padding: 20px;
-    border: none !important;
+    text-align: center;
+    background-color: #edeef0;
 }
 
 .topnav {
     padding: 20px;
     text-align: center;
     width: 100%;
-}
-
-.form_box {
     background-color: white;
-    border-radius: 40px;
-    padding: 10px;
-    margin: 10px;
-    width: 25rem;
-    margin-left: 50%;
-    transform: translateX(-25%);
 }
 
-.input_box {
-    margin: 10px;
-}
-
-.button {
-    background: #007CFF;
-    margin: 10px;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 13px;
+.btn_submit {
+    background-color: #04AA6D;
     color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.frm_text {
+    width: 100%;
+}
+
+.frm {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.mrgn 
+{
+    margin: 5px;
+}
+
+.block-reg {
+    margin: 20px;
+    padding: 30px;
+    align-content: center;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 0 0, 0 0 0 1px #edeef0;
+}
+
+.background-main {
+    background-color: #edeef0;
+}
+
+.background-white {
+    background-color: white;
+}
+
+.text-color-gray {
+    color: slategray;
+}
+
+.center {
+    text-align: center;
+    align-content: center;
+    margin: 5px;
+}
+
+.enter_submit {
+    background-color: #5181b8;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.main-img 
+{
+    vertical-align: central;
+    width: 100%;
+    max-width: 100%;
+}
+
+.text-size_12 {
+    font-size: 15px;
+}
+
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.date_control 
+{
+    width: 25%;
+    display: inline;
+    min-width: max-content;
+}
+
+.date_box{
+    width: 100%;
 }

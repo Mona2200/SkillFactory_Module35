@@ -21,6 +21,7 @@ using SocialNetwork.Models.Messages;
 
 using AutoMapper;
 
+
 namespace SocialNetwork
 {
     public class Startup
@@ -93,7 +94,7 @@ namespace SocialNetwork
 
             app.UseEndpoints(endpoints =>
             {
-                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                // определение маршрутов
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

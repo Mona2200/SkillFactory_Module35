@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SocialNetwork.Models.Users;
 using SocialNetwork.Models.Friends;
+using SocialNetwork.Models.Messages;
 
 namespace SocialNetwork.Data.Repos
 {
@@ -10,10 +11,12 @@ namespace SocialNetwork.Data.Repos
     {
         public FriendsRepository(ApplicationDbContext db)
       : base(db)
-        { }
-        
+        {
 
-        public void AddFriend (User target, User Friend)
+        }
+
+
+        public void AddFriend(User target, User Friend)
         {
             var friends = Set.AsEnumerable().FirstOrDefault(x => x.UserId == target.Id && x.CurrentFriendId == Friend.Id);
 
@@ -27,7 +30,7 @@ namespace SocialNetwork.Data.Repos
                     CurrentFriendId = Friend.Id,
                 };
 
-                 Create(item);
+                Create(item);
             }
         }
 
