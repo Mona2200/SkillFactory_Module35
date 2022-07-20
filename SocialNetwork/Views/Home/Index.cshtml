@@ -10,7 +10,7 @@
 }
 @if (SignInManager.IsSignedIn(User))
 {
-    //редирект
+    <a asp-area="" asp-controller="AccountManager" asp-action="MyPage">Моя страница</a>
 }
 else
 {

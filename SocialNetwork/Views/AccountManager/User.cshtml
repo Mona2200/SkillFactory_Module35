@@ -1,4 +1,8 @@
-﻿@model SocialNetwork.ViewModels.Account.UserViewModel; 
+﻿@model SocialNetwork.ViewModels.Account.UserViewModel;
+
+@{
+    ViewData["Title"] = Model.User.GetFullName();
+}
 
 <div class="block-reg background-white">
 
@@ -83,7 +87,7 @@
                 </div>
 
             </div>
-            </div>
+        </div>
 
     </div>
 
