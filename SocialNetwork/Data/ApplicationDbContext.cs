@@ -11,8 +11,8 @@ namespace SocialNetwork.Data
             : base(options)
         {
          //Database.EnsureDeleted();
-         //Database.Migrate();
-         Database.EnsureCreated();
+         Database.Migrate();
+         //Database.EnsureCreated();
       }
 
         protected override void OnModelCreating(ModelBuilder builder)

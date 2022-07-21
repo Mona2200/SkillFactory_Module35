@@ -104,13 +104,13 @@ namespace SocialNetwork.Controllers
 
         [Route("Edit")]
         [HttpGet]
-        public IActionResult Edit()
+        public async Task<IActionResult> Edit()
         {
             var user = User;
 
-            var result = _userManager.GetUserAsync(user);
+            var result = await _userManager.GetUserAsync(user);
 
-            var editmodel = _mapper.Map<UserEditViewModel>(result.Result);
+            var editmodel = _mapper.Map<UserEditViewModel>(result);
 
             return View("Edit", editmodel);
         }
@@ -196,7 +196,7 @@ namespace SocialNetwork.Controllers
 
             var repository = _unitOfWork.GetRepository<Friend>() as FriendsRepository;
 
-            repository.AddFriend(result, friend);
+            await repository.AddFriend(result, friend);
 
 
             return RedirectToAction("MyPage", "AccountManager");
@@ -215,7 +215,7 @@ namespace SocialNetwork.Controllers
 
             var repository = _unitOfWork.GetRepository<Friend>() as FriendsRepository;
 
-            repository.DeleteFriend(result, friend);
+            await repository.DeleteFriend(result, friend);
 
             return RedirectToAction("MyPage", "AccountManager");
 
@@ -310,7 +310,7 @@ namespace SocialNetwork.Controllers
                 Recipient = friend,
                 Text = chat.NewMessage.Text,
             };
-            repository.Create(item);
+            await repository.Create(item);
 
             var model = await GenerateChat(id);
             return View("Chat", model);
