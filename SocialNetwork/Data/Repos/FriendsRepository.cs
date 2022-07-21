@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using SocialNetwork.Models.Users;
 using SocialNetwork.Models.Friends;
 using SocialNetwork.Models.Messages;
@@ -16,9 +17,9 @@ namespace SocialNetwork.Data.Repos
         }
 
 
-        public void AddFriend(User target, User Friend)
+        public async void AddFriend(User target, User Friend)
         {
-            var friends = Set.AsEnumerable().FirstOrDefault(x => x.UserId == target.Id && x.CurrentFriendId == Friend.Id);
+            var friends = await Set.FirstOrDefaultAsync(x => x.UserId == target.Id && x.CurrentFriendId == Friend.Id);
 
             if (friends == null)
             {
@@ -34,17 +35,17 @@ namespace SocialNetwork.Data.Repos
             }
         }
 
-        public List<User> GetFriendsByUser(User target)
+        public async Task<List<User>> GetFriendsByUser(User target)
         {
-            var friends = Set.Include(x => x.CurrentFriend).AsEnumerable().Where(x => x.User.Id == target.Id).Select(x => x.CurrentFriend);
+            var friends = await Set.Include(x => x.CurrentFriend).Where(x => x.User.Id == target.Id).Select(x => x.CurrentFriend).ToListAsync();
 
-            return friends.ToList();
+            return friends;
         }
 
 
-        public void DeleteFriend(User target, User Friend)
+        public async void DeleteFriend(User target, User Friend)
         {
-            var friends = Set.AsEnumerable().FirstOrDefault(x => x.UserId == target.Id && x.CurrentFriendId == Friend.Id);
+            var friends = await Set.FirstOrDefaultAsync(x => x.UserId == target.Id && x.CurrentFriendId == Friend.Id);
 
             if (friends != null)
             {
