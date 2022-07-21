@@ -17,7 +17,7 @@ namespace SocialNetwork.Data.Repos
         }
 
 
-        public async void AddFriend(User target, User Friend)
+        public async Task AddFriend(User target, User Friend)
         {
             var friends = await Set.FirstOrDefaultAsync(x => x.UserId == target.Id && x.CurrentFriendId == Friend.Id);
 
@@ -31,7 +31,7 @@ namespace SocialNetwork.Data.Repos
                     CurrentFriendId = Friend.Id,
                 };
 
-                Create(item);
+                await Create(item);
             }
         }
 
@@ -43,13 +43,13 @@ namespace SocialNetwork.Data.Repos
         }
 
 
-        public async void DeleteFriend(User target, User Friend)
+        public async Task DeleteFriend(User target, User Friend)
         {
             var friends = await Set.FirstOrDefaultAsync(x => x.UserId == target.Id && x.CurrentFriendId == Friend.Id);
 
             if (friends != null)
             {
-                Delete(friends);
+                await Delete(friends);
             }
         }
 

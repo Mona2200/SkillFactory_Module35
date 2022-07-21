@@ -27,7 +27,7 @@ namespace SocialNetwork.Controllers
 
         [Route("")]
         [Route("[controller]/[action]")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             if (_signInManager.IsSignedIn(User))
             {
