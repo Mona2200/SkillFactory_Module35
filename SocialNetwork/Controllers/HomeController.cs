@@ -4,10 +4,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
 using SocialNetwork.ViewModels.Account;
 using SocialNetwork.Models;
+using SocialNetwork.Models.Users;
 
 
 namespace SocialNetwork.Controllers
@@ -15,17 +17,26 @@ namespace SocialNetwork.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly SignInManager<User> _signInManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(SignInManager<User> signInManager, ILogger<HomeController> logger)
         {
             _logger = logger;
+            _signInManager = signInManager;
         }
 
         [Route("")]
         [Route("[controller]/[action]")]
         public IActionResult Index()
         {
-            return View(new MainViewModel());
+            if (_signInManager.IsSignedIn(User))
+            {
+                return RedirectToAction("MyPage", "AccountManager");
+            }
+            else
+            {
+                return View(new MainViewModel());
+            }
         }
 
         [Route("[action]")]

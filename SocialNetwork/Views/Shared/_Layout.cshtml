@@ -22,15 +22,18 @@
             <div class="topnav">
                 @if (!SignInManager.IsSignedIn(User))
                 {
-                    <a asp-area="" asp-controller="Home" asp-action="Index"><span class="head_letter">S</span>ocial<span class="bold_text"><span class="head_letter">N</span>etwork</span></a>
+                    <a asp-area="" asp-controller="Home" asp-action="Index"> <img src="https://i.ibb.co/jykrMp9/logo.jpg" class="logo" ></a>
                 }
                 else
 
                 {
-            <a asp-area="" asp-controller="AccountManager" asp-action="MyPage"><span class="head_letter">S</span>ocial<span class="bold_text"><span class="head_letter">N</span>etwork</span></a>
+                    <a asp-area="" asp-controller="AccountManager" asp-action="MyPage"> <img src="https://i.ibb.co/jykrMp9/logo.jpg" class="logo" ></a>
                 }
                 <partial name="_LoginPartial.cshtml" />
-                <partial name="_SearchLayoutPartial" />
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <partial name="_SearchLayoutPartial" />
+                }
             </div>
         </div>
     </header>
@@ -42,7 +45,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - SocialNetwork - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - SocialNetwork - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

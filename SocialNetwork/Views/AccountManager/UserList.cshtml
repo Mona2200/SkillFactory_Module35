@@ -12,6 +12,18 @@
         {
             <div>
                 <label>@user.GetFullName()</label>
+                <div class="mrgn left-align">
+                    <img src="@user.Image" class="ava" />
+                </div>
+                <label>@user.Status</label>
+                <label>@user.About</label>
+                <div class="mrgn left-align">
+                    <form asp-controller="AccountManager" asp-action="Chat" asp-route-id="@user.Id" method="post">
+                        <button type="submit" class="btn btn-sm btn-primary min-width-but">
+                            Чат
+                        </button>
+                    </form>
+                </div>
                 @if (!@user.IsFriendWithCurrent)
                 {
                     <form asp-controller="AccountManager" asp-action="AddFriend" asp-route-id="@user.Id" method="post">
