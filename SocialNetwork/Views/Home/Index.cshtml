@@ -5,12 +5,12 @@
 
 @model SocialNetwork.ViewModels.Account.MainViewModel;
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Главная";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @if (SignInManager.IsSignedIn(User))
 {
-    <a asp-area="" asp-controller="AccountManager" asp-action="MyPage">Моя страница</a>
+    //
 }
 else
 {
