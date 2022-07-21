@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SocialNetwork.Data.Repos
 {
@@ -18,21 +19,21 @@ namespace SocialNetwork.Data.Repos
             Set = set;
         }
 
-        public void Create(T item)
+        public async void Create(T item)
         {
-            Set.Add(item);
-            _db.SaveChanges();
+            await Set.AddAsync(item);
+            await _db.SaveChangesAsync();
         }
 
-        public void Delete(T item)
+        public async void Delete(T item)
         {
             Set.Remove(item);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
         }
 
-        public T Get(int id)
+        public async Task<T> Get(int id)
         {
-            return Set.Find(id);
+            return await Set.FindAsync(id);
         }
 
         public IEnumerable<T> GetAll()
@@ -40,10 +41,10 @@ namespace SocialNetwork.Data.Repos
             return Set;
         }
 
-        public void Update(T item)
+        public async void Update(T item)
         {
             Set.Update(item);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
         }
     }
 }

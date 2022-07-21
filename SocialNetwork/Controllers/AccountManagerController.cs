@@ -36,7 +36,6 @@ namespace SocialNetwork.Controllers
 
         }
 
-
         [Route("Generate")]
         [HttpGet]
         public async Task<IActionResult> Generate()
@@ -89,7 +88,7 @@ namespace SocialNetwork.Controllers
         {
             var repository = _unitOfWork.GetRepository<Friend>() as FriendsRepository;
 
-            return repository.GetFriendsByUser(user);
+            return await repository.GetFriendsByUser(user);
         }
 
         private async Task<List<User>> GetAllFriend()
@@ -100,7 +99,7 @@ namespace SocialNetwork.Controllers
 
             var repository = _unitOfWork.GetRepository<Friend>() as FriendsRepository;
 
-            return repository.GetFriendsByUser(result);
+            return await repository.GetFriendsByUser(result);
         }
 
         [Route("Edit")]
@@ -229,7 +228,11 @@ namespace SocialNetwork.Controllers
 
             var result = await _userManager.GetUserAsync(currentuser);
 
-            var list = _userManager.Users.AsEnumerable().Where(x => x.GetFullName().ToLower().Contains(search.ToLower())).ToList();
+            var list = _userManager.Users.AsEnumerable().ToList();
+            if (!string.IsNullOrEmpty(search))
+            {
+                list = list.Where(x => x.GetFullName().ToLower().Contains(search.ToLower())).ToList();
+            }
             var withfriend = await GetAllFriend();
 
             var data = new List<UserWithFriendExt>();
@@ -267,7 +270,7 @@ namespace SocialNetwork.Controllers
 
             var repository = _unitOfWork.GetRepository<Message>() as MessageRepository;
 
-            var mess = repository.GetMessages(result, friend);
+            var mess = await repository.GetMessages(result, friend);
 
             var model = new ChatViewModel()
             {
