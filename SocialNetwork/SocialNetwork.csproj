@@ -22,8 +22,4 @@
     <PackageReference Include="UnitOfWorkCore.AspNetCore" Version="1.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\" />
-  </ItemGroup>
-
 </Project>
